@@ -37,17 +37,6 @@ Gossiper is a real-time messaging application backend built with Express.js and 
    npm start
    ```
 
-## API Endpoints
-
-### Authentication & Redirection
-- `GET /auth-check`: Validates JWT and redirects to `/gossip` if valid, otherwise returns login information.
-
-### User Routes (`/api/v0`)
-- `POST /register`: Register a new user
-- `POST /login`: Authenticate user and receive cookie
-- `GET /user`: Get current authenticated user details (Protected)
-- `DELETE /user/:id`: Delete a user (Protected)
-
 ### Room Routes (`/api/v0`)
 - `POST /room`: Create a new room (Protected)
 
