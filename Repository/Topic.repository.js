@@ -17,6 +17,7 @@ const getTopicById = async (topicid) => {
         const topic = await Topic.findById(topicid);
         return topic;
     } catch (error) {
+        console.error(`[TopicRepository] DB Error:`, error);
         throw error;
     }
 };

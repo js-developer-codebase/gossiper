@@ -1,6 +1,7 @@
 import { UserService } from "./User.service.js";
 import { TopicRepository } from "../Repository/Topic.repository.js";
 import { RoomService } from "./Rooms.service.js";
+import mongoose from "mongoose";
 
 const createTopic = async (name, roomid, userid) => {
     try {
@@ -24,6 +25,24 @@ const createTopic = async (name, roomid, userid) => {
     }
 };
 
+const getTopicById = async (topicId) => {
+    try {
+        if (!topicId) {
+            throw new Error("Topic id is required");
+        }
+        console.log(`[TopicService] Fetching topic with ID: ${topicId}`);
+        const topic = await TopicRepository.getTopicById(topicId);
+        if (!topic) {
+            console.log(`[TopicService] No topic found for ID: ${topicId}`);
+        }
+        return topic;
+    } catch (error) {
+        console.error(`[TopicService] Error fetching topic ${topicId}:`, error);
+        throw error;
+    }
+}
+
 export const TopicService = {
-    createTopic
+    createTopic,
+    getTopicById
 };
